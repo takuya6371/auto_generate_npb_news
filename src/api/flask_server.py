@@ -43,4 +43,4 @@ def npb(date=None):
 
 # おまじない
 if __name__ == "__main__":
-    api.run(debug=True)
+    api.run()

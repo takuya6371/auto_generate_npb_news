@@ -286,6 +286,13 @@ def extract_index(file):
         return_data['home_team'] = home_board.find('span').text
         return_data['game_status'] = '試合中止'
         return return_data
+    if 'ノーゲーム' in game_status:
+        visitor_board = soup.find(class_='top')
+        return_data['visitor_team'] = visitor_board.find('span').text
+        home_board = soup.find(class_='bottom')
+        return_data['home_team'] = home_board.find('span').text
+        return_data['game_status'] = 'ノーゲーム'
+        return return_data
     elif not '試合終了' in game_status:
         return None
     return_data['game_status'] = '試合終了'
