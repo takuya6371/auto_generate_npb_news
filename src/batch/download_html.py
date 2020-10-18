@@ -27,6 +27,11 @@ target_date = '03'
 
 def file_download(year, month, date):
 
+    if os.path.exists(data_path + 'html/schedule/'):
+        result = 'schedule folder exist'
+    else:
+        os.mkdir(data_path + 'html/schedule/')
+        result = 'schedule folder create:' + data_path + 'html/schedule/'
     # download schedule page
     target_url = url_head + 'games/' + year + '/schedule_' + month + '_detail.html'
     html_path = data_path + 'html/schedule/' + year + month + '_schedule.html'

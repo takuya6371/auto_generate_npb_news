@@ -1,3 +1,4 @@
-/data
+/data/html/*
+/data/json/*
 *.pyc
 .DS_Store
