@@ -50,6 +50,14 @@ def file_download(year, month, date):
             file.write(html.text)
         # urllib.request.urlretrieve(target_url,"{0}".format(html_path), False)
 
+    # create filder for each month
+    month_folder_path = data_path + 'html/' + year + month
+    if os.path.exists(month_folder_path):
+        result = 'month folder exist'
+    else:
+        os.mkdir(month_folder_path)
+        result = 'month folder create:' + month_folder_path
+
     # create filder for each date
     folder_path = data_path + 'html/' + year + month + '/' + year + month + date
     if os.path.exists(folder_path):
