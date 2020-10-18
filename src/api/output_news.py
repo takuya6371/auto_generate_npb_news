@@ -10,9 +10,9 @@ import numpy as np
 # target year
 target_year = '2020'
 # target month
-target_month = '06'
+target_month = '07'
 # target date
-target_date = '19'
+target_date = '21'
 
 
 def get_json_list(year, month, date):
@@ -61,7 +61,7 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
         ining_begin_score = [current_score_vis, current_score_home]
         # plus score in current ining
         current_score_vis += int(
-            visitor_score_board[str(i+1)].replace('x', '0'))
+            visitor_score_board[str(i+1)].replace('x', '0').replace('', '0'))
         # find whether critical score or not
         hilight_ining, hilight_synario, hilight_ining_begin_score, hilight_ining_get_score, tuikaten_flg = common_func.compare_game_status(
             '1',
@@ -70,7 +70,8 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
             hilight_synario,
             current_score_vis,
             current_score_home,
-            int(visitor_score_board[str(i+1)].replace('x', '0')),
+            int(visitor_score_board[str(i+1)
+                                    ].replace('x', '0').replace('', '0')),
             ining_begin_score,
             hilight_ining_begin_score,
             hilight_ining_get_score,
@@ -81,7 +82,10 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
         # adapt score in up ining
         ining_begin_score = [current_score_vis, current_score_home]
         # plus score in current ining
-        current_score_home += int(home_score_board[str(i+1)].replace('x', '0'))
+        print(home_score_board[str(i+1)])
+
+        current_score_home += int(
+            home_score_board[str(i+1)].replace('x', '0').replace('', '0'))
         # find whether critical score or not
         hilight_ining, hilight_synario, hilight_ining_begin_score, hilight_ining_get_score, tuikaten_flg = common_func.compare_game_status(
             '2',
@@ -90,7 +94,7 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
             hilight_synario,
             current_score_home,
             current_score_vis,
-            int(home_score_board[str(i+1)].replace('x', '0')),
+            int(home_score_board[str(i+1)].replace('x', '0').replace('', '0')),
             ining_begin_score,
             hilight_ining_begin_score,
             hilight_ining_get_score,
