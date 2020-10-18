@@ -20,7 +20,7 @@ def hello():
     return name
 
 
-@api.route('/npb/news/<date>', methods=['POST'])
+@api.route('/api/npb/news/<date>', methods=['POST'])
 def npb(date=None):
     print(request.headers.get('Auth'))
     auth = request.headers.get('Auth')
