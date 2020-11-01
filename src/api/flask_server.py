@@ -1,5 +1,5 @@
 # coding: UTF-8
-from flask import Flask, make_response, request
+from flask import Flask, make_response, request, jsonify
 from flask_cors import CORS, cross_origin
 import output_news as on
 import datetime
@@ -38,7 +38,7 @@ def npb(date=None):
         name = "Good"
         return_data = on.main_process(date[0:4], date[4:6], date[6:8])
         print(return_data)
-    return {'auto_news': '¥n'.join(return_data)}
+    return jsonify({'auto_news': '¥n'.join(return_data)})
 
 
 # おまじない
