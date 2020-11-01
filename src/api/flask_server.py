@@ -38,7 +38,7 @@ def npb(date=None):
         name = "Good"
         return_data = on.main_process(date[0:4], date[4:6], date[6:8])
         print(return_data)
-    return '¥n'.join(return_data)
+    return {'auto_news': '¥n'.join(return_data)}
 
 
 # おまじない
