@@ -222,7 +222,7 @@ def main_process(target_year, target_month, target_date):
             print(sentence1, file=f)
             print(sentence2, file=f)
         game_result_list.append(sentence1 + sentence2)
-    return game_result_list
+    return {'auto_news': game_result_list}
 
 
 if __name__ == '__main__':
