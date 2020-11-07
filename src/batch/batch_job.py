@@ -25,6 +25,7 @@ if __name__ == '__main__':
     mode = args[1]
     year = args[2]
     month = args[3]
-    date = args[4]
+    if len(args) > 3:
+        date = args[4]
 
     exe_process(mode, year, month, date)
