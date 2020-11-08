@@ -73,7 +73,7 @@ def compare_game_status(
           and current_get_score > 0):
         tuikaten_flg = True
 
-    return hilight_ining, hilight_synario, hilight_ining_begin_score, hilight_ining_get_score, tuikaten_flg
+    return hilight_ining, hilight_synario, hilight_ining_begin_score, int(hilight_ining_get_score), tuikaten_flg
 
 
 def list_hilight_ining_play_with_score(visitor_score_board,
@@ -84,7 +84,6 @@ def list_hilight_ining_play_with_score(visitor_score_board,
                                        playbyplay,
                                        hilight_ining_begin_score
                                        ):
-    print("begin"+str(hilight_ining_begin_score[0]+1))
     if hilight_ining_begin_score[0] == hilight_ining_begin_score[1]:
         current_score_diff = 0
     else:
@@ -164,11 +163,12 @@ def make_hilight_ining_play_sentence(hilight_play_list, hilight_ining, f):
             sorted_hilight_play_list = sorted(
                 hilight_play_list, key=lambda x: x['get_score'], reverse=True)
             print(sorted_hilight_play_list, file=f)
-            pickup_play = sorted_hilight_play_list[0]['player'] + 'の' \
-                + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[0]['play']] if sorted_hilight_play_list[0]['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[0]['play']) \
-                + '、' + sorted_hilight_play_list[1]['player'] + 'の' \
-                + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[1]['play']] if sorted_hilight_play_list[1]
-                   ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[1]['play'])
+            pickup_play = sorted_hilight_play_list[0]['player'] + 'の'
+            + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[0]['play']] if sorted_hilight_play_list[0]
+               ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[0]['play'])
+            + '、' + sorted_hilight_play_list[1]['player'] + 'の'
+            + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[1]['play']] if sorted_hilight_play_list[1]
+               ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[1]['play'])
             print(pickup_play, file=f)
             if len(hilight_play_list) > 2:
                 pickup_play_end = 'など'
@@ -177,17 +177,19 @@ def make_hilight_ining_play_sentence(hilight_play_list, hilight_ining, f):
             pickup_play += pickup_play_end
         else:
             pickup_play = hilight_play_list[0]['player'] + 'の' \
-                + npb_const.PLAY_SHORT_NAME[hilight_play_list[0]['play']] if hilight_play_list[0]['play'] in npb_const.PLAY_SHORT_NAME else hilight_play_list[0]['play'] \
-                + ''
+                + npb_const.PLAY_SHORT_NAME[hilight_play_list[0]['play']]\
+                if hilight_play_list[0]['play'] in npb_const.PLAY_SHORT_NAME \
+                else hilight_play_list[0]['play'] + ''
 
     return pickup_play
 
 
 def make_hilight_ining_sayonara_play_sentence(hilight_play_list, f):
     print(len(hilight_play_list), file=f)
-    pickup_play = hilight_play_list[len(hilight_play_list)-1]['player'] + 'の' \
-        + npb_const.PLAY_SHORT_NAME[hilight_play_list[len(hilight_play_list)-1]['play']] if hilight_play_list[len(hilight_play_list)-1]['play'] in npb_const.PLAY_SHORT_NAME else hilight_play_list[len(hilight_play_list)-1]['play'] \
-        + 'で'
+    pickup_play = hilight_play_list[len(hilight_play_list)-1]['player'] + 'の'
+    + npb_const.PLAY_SHORT_NAME[hilight_play_list[len(hilight_play_list)-1]['play']] if hilight_play_list[len(
+        hilight_play_list)-1]['play'] in npb_const.PLAY_SHORT_NAME else hilight_play_list[len(hilight_play_list)-1]['play']
+    + 'で'
 
     return pickup_play
 

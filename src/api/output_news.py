@@ -59,9 +59,12 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
         # See up ining
         # current score
         ining_begin_score = [current_score_vis, current_score_home]
+        if visitor_score_board[str(i+1)] == '' or visitor_score_board[str(i+1)] == 'x':
+            visitor_curent_ining_score = 0
+        else:
+            visitor_curent_ining_score = int(visitor_score_board[str(i+1)])
         # plus score in current ining
-        current_score_vis += int(
-            visitor_score_board[str(i+1)].replace('x', '0').replace('', '0'))
+        current_score_vis += visitor_curent_ining_score
         # find whether critical score or not
         hilight_ining, hilight_synario, hilight_ining_begin_score, hilight_ining_get_score, tuikaten_flg = common_func.compare_game_status(
             '1',
@@ -70,11 +73,10 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
             hilight_synario,
             current_score_vis,
             current_score_home,
-            int(visitor_score_board[str(i+1)
-                                    ].replace('x', '0').replace('', '0')),
+            visitor_curent_ining_score,
             ining_begin_score,
             hilight_ining_begin_score,
-            hilight_ining_get_score,
+            int(hilight_ining_get_score),
             tuikaten_flg,
         )
 
@@ -84,8 +86,12 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
         # plus score in current ining
         print(home_score_board[str(i+1)])
 
-        current_score_home += int(
-            home_score_board[str(i+1)].replace('x', '0').replace('', '0'))
+        if home_score_board[str(i+1)] == '' or home_score_board[str(i+1)] == 'x':
+            home_curent_ining_score = 0
+        else:
+            home_curent_ining_score = int(home_score_board[str(i+1)])
+
+        current_score_home += home_curent_ining_score
         # find whether critical score or not
         hilight_ining, hilight_synario, hilight_ining_begin_score, hilight_ining_get_score, tuikaten_flg = common_func.compare_game_status(
             '2',
@@ -94,10 +100,10 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
             hilight_synario,
             current_score_home,
             current_score_vis,
-            int(home_score_board[str(i+1)].replace('x', '0').replace('', '0')),
+            home_curent_ining_score,
             ining_begin_score,
             hilight_ining_begin_score,
-            hilight_ining_get_score,
+            int(hilight_ining_get_score),
             tuikaten_flg,
         )
 
