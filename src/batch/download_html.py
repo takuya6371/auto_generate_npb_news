@@ -116,6 +116,7 @@ def file_download(year, month, date):
             print(box_path+' exist')
         else:
             print('box download')
+            print(url_head + url + 'box.html')
             html = requests.get(url_head + url + 'box.html')
             html.encoding = html.apparent_encoding
             with open(box_path, 'w') as file:
@@ -174,15 +175,19 @@ def make_json(year, month, date):
                         data = index_data
             else:
             '''
-            if not data is None:
+            if not data is None and index_data['game_status'] == '試合終了':
                 data.update(index_data)
             else:
                 data = index_data
+            print(index_data)
 
             with open(json_file, 'a') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
+
         if 'playbyplay' in file:
             print('playbyplay')
+
+
             playbyplay_data = extract_playbyplay(file)
 
             '''
@@ -196,15 +201,17 @@ def make_json(year, month, date):
             else:
             '''
             # data = playbyplay_data
+            print(playbyplay_data)
+            print(data)
             if not playbyplay_data is None:
-                if not data is None:
+                if not data is None and data['game_status'] == '試合終了':
                     data.update(playbyplay_data)
                 else:
                     data = playbyplay_data
-
-                with open(json_file, 'w') as f:
-                    #json.dump(',', f)
-                    json.dump(data, f, ensure_ascii=False, indent=4)
+                playbyplay_data = ''
+            with open(json_file, 'w') as f:
+                #json.dump(',', f)
+                json.dump(data, f, ensure_ascii=False, indent=4)
 
 # read playbyplay and extract playbyplay data
 

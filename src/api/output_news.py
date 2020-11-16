@@ -89,7 +89,7 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
         if home_score_board[str(i+1)] == '' or home_score_board[str(i+1)] == 'x':
             home_curent_ining_score = 0
         else:
-            home_curent_ining_score = int(home_score_board[str(i+1)])
+            home_curent_ining_score = int(home_score_board[str(i+1)].split('x')[0])
 
         current_score_home += home_curent_ining_score
         # find whether critical score or not
@@ -140,7 +140,9 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
             playbyplay,
             hilight_ining_begin_score,
         )
-        print(hilight_play_list)
+        print(hilight_ining_num)
+        print(hilight_ining_up_down)
+        print(playbyplay)
         # find synario
 
         # oituki pattern(Maybe drow)
@@ -166,7 +168,7 @@ def define_game_scenario(visitor_team, visitor_score_board, home_team, home_scor
             return npb_const.TEAM_SHORT_NAME[hilight_team] + 'は' \
                 + str(hilight_ining.split('-')[0]) + '回、' \
                 + highlight_play_list \
-                + 'で' + str(hilight_ining_get_score) + '点を勝ち越し' \
+                + str(hilight_ining_get_score) + '点を勝ち越し' \
                 + sentense_end
 
         # gyakuten
@@ -199,9 +201,16 @@ def main_process(target_year, target_month, target_date):
     if len(file_list) == 0:
         return ''
     for file in file_list:
+        print(file)
         with open(file) as f:
             df = json.load(f)
             # get name of win,lose team
+
+            sentence1 = df['home_team'] + '対' + df['visitor_team'] + 'の試合は、'
+            if not df['game_status'] == '試合終了':
+                sentence2 = '中止となりました。'
+                game_result_list.append(sentence1 + sentence2)
+                continue
             win_team, lose_team = win_lose_team(
                 df['visitor_team'],
                 df['visitor_score_board'],
@@ -209,21 +218,22 @@ def main_process(target_year, target_month, target_date):
                 df['home_score_board']
             )
             # print(win_team,lose_team)
-            sentence2 = define_game_scenario(
-                df['visitor_team'],
-                df['visitor_score_board'],
-                df['home_team'],
-                df['home_score_board'],
-                df['playbyplay']
-            )
 
         # first sentence
         if win_team == '':
             sentence1_end = 'で引き分けました。'
         else:
             sentence1_end = 'で' + win_team + 'が勝ちました。'
-        sentence1 = df['home_team'] + '対' + df['visitor_team'] + 'は、' + df['home_score_board']['total'] + '対' \
+        sentence1 = df['home_team'] + '対' + df['visitor_team'] + 'の試合は、' + df['home_score_board']['total'] + '対' \
             + df['visitor_score_board']['total'] + sentence1_end
+            # Second sentence
+        sentence2 = define_game_scenario(
+                df['visitor_team'],
+                df['visitor_score_board'],
+                df['home_team'],
+                df['home_score_board'],
+                df['playbyplay']
+            )
         with open('print.txt', 'a') as f:
             print(sentence1, file=f)
             print(sentence2, file=f)

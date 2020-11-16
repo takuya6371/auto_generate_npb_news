@@ -7,9 +7,9 @@ def trans_play_name(play, get_score, f):
         play_name = npb_const.PLAY_SHORT_NAME[play]
     else:
         if int(get_score) > 1:
-            play_name = str(get_score) + '点' + npb_const.PLAY_SHORT_NAME[play]
+            play_name = str(get_score) + '点' + npb_const.PLAY_SHORT_NAME[play] if play in npb_const.PLAY_SHORT_NAME else play
         else:
-            play_name = npb_const.PLAY_SHORT_NAME[play]
+            play_name =  npb_const.PLAY_SHORT_NAME[play] if play in npb_const.PLAY_SHORT_NAME else play
     return play_name
 
 
@@ -84,6 +84,12 @@ def list_hilight_ining_play_with_score(visitor_score_board,
                                        playbyplay,
                                        hilight_ining_begin_score
                                        ):
+    print(visitor_score_board)
+    if int(hilight_ining_up_down) == 1:
+        hilight_ining_get_score = visitor_score_board[hilight_ining_num]
+    else:
+        hilight_ining_get_score = home_score_board[hilight_ining_num]
+
     if hilight_ining_begin_score[0] == hilight_ining_begin_score[1]:
         current_score_diff = 0
     else:
@@ -115,6 +121,7 @@ def list_hilight_ining_play_with_score(visitor_score_board,
                 runner_cnt_up = 1
 
             if before_get_score == 0:
+                # ランナーの前後とアウトカウントで得点を推測
                 get_score = before_runner - runner_cnt + \
                     runner_cnt_up - (out_cnt - before_out)
                 print(get_score)
@@ -145,6 +152,10 @@ def list_hilight_ining_play_with_score(visitor_score_board,
             before_get_score = curernt_get_score
 
     # print(cnt_score)
+    if not hilight_ining_get_score == get_score:
+        score_play_list.append({'play': before_play, 'get_score': get_score,
+                                'current_score_diff': current_score_diff, 'player': before_player})
+
     print("score_list"+str(score_play_list))
     return score_play_list
 
@@ -163,12 +174,11 @@ def make_hilight_ining_play_sentence(hilight_play_list, hilight_ining, f):
             sorted_hilight_play_list = sorted(
                 hilight_play_list, key=lambda x: x['get_score'], reverse=True)
             print(sorted_hilight_play_list, file=f)
-            pickup_play = sorted_hilight_play_list[0]['player'] + 'の'
-            + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[0]['play']] if sorted_hilight_play_list[0]
-               ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[0]['play'])
-            + '、' + sorted_hilight_play_list[1]['player'] + 'の'
-            + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[1]['play']] if sorted_hilight_play_list[1]
-               ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[1]['play'])
+            pickup_play = sorted_hilight_play_list[0]['player'] + 'の' \
+                + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[0]['play']] \
+                if sorted_hilight_play_list[0] ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[0]['play']) \
+                + '、' + sorted_hilight_play_list[1]['player'] + 'の' + (npb_const.PLAY_SHORT_NAME[sorted_hilight_play_list[1]['play']] \
+                if sorted_hilight_play_list[1] ['play'] in npb_const.PLAY_SHORT_NAME else sorted_hilight_play_list[1]['play'])
             print(pickup_play, file=f)
             if len(hilight_play_list) > 2:
                 pickup_play_end = 'など'
