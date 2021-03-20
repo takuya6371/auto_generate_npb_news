@@ -1,27 +1,39 @@
+# coding: UTF-8
+import sys
+import os
+from typing import Literal
 import datetime
 import calendar
-import sys
-import download_html as dh
+sys.path.append(os.path.abspath(".."))
+#import download_html as dh
+from handler.news_file import GenerateNpbNewsData 
 args = sys.argv
+"""
+パッケージ
+import
+分ける
 
-
-def exe_process(mode, year, month, date):
+ファイルをダウンロード
+HTMLをJSONに変換
+"""
+# TODO Log 
+def exec_process(mode, year, month, date):
     print("job start")
     print(args)
 
     if mode == 'date':
-        dh.file_download(year, month, date)
-        index_data = dh.make_json(year, month, date)
+        GenerateNpbNewsDataClass = GenerateNpbNewsData(year, month, date)
+        GenerateNpbNewsDataClass.main_process()
     elif mode == 'month':
         end_date = calendar.monthrange(int(year), int(month))[1]
         for i in range(1, end_date + 1):
             print(str(i).zfill(2))
-            dh.file_download(str(year), str(month), str(i).zfill(2))
-            index_data = dh.make_json(
-                str(year), str(month), str(i).zfill(2))
-
+            GenerateNpbNewsData(year, month, i.zfill(2))
+            GenerateNpbNewsData.main_process()
 
 if __name__ == '__main__':
+    mode: Literal['date', 'month']
+    mode = 'fff'
     mode = args[1]
     year = args[2]
     month = args[3]
@@ -30,4 +42,4 @@ if __name__ == '__main__':
     else:
         date = "01"
 
-    exe_process(mode, year, month, date)
+    exec_process(mode, year, month, date)
