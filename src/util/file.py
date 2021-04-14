@@ -3,13 +3,13 @@ import os
 import json
 import glob
 
-def file_read (file:TextIOWrapper):
-    with open(file) as f:
-       return f.read()
-
 def file_write (file_path:str, text:TextIOWrapper):
     with open(file_path, 'w') as file:
         file.write(text)
+
+def json_file_read (file):
+    with open(file) as f:
+       return json.load(f)
 
 def create_folder (path: str):
     if not os.path.exists(path):

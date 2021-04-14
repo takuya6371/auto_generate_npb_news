@@ -2,11 +2,10 @@
 import sys
 import os
 from typing import Literal
-import datetime
 import calendar
 sys.path.append(os.path.abspath(".."))
 #import download_html as dh
-from handler.news_file import GenerateNpbNewsData 
+from batch.handler.news_file import GenerateNpbNewsData 
 args = sys.argv
 """
 パッケージ

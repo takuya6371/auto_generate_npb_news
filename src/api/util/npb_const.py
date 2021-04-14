@@ -1,11 +1,11 @@
 # coding: UTF-8
 import os
 auth = 'test'
-SENSEI = 'sensei'
-OITUKI = 'oituki'
-GYAKUTEN = 'gyakuten'
-KATIKOSI = 'katikosi'
-OITUKIKATIKOSI = 'oitukikatikosi'
+START_SCORE = 'start_score'
+CATCH_UP = 'catch_up'
+REVERERSAL = 'reverersal'
+WIN_SCORE = 'win_score'
+#OITUKIKATIKOSI = 'oitukikatikosi'
 UP_DOWN = {
     '1': '表',
     '2': '裏',
@@ -25,6 +25,8 @@ TEAM_SHORT_NAME = {
     '東京ヤクルトスワローズ': 'ヤクルト',
 }
 PLAY_SHORT_NAME = {
+    'フォアボール': '押し出しフォアボール',
+    'デッドボール': '押し出しデッドボール',
     'ショートゴロ': 'ショートゴロ',
     'フォアボール': '押し出し',
     'レフト前タイムリーヒット': 'レフト前タイムリーヒット',
@@ -66,12 +68,12 @@ PLAY_SHORT_NAME = {
 }
 # abs path
 abs_path = os.path.dirname(os.path.abspath(__file__))
-home_path = '/'.join(abs_path.split('/')[0:-2])
+home_path = '/'.join(abs_path.split('/')[0:-3])
 data_path = home_path + '/data/'
 
 runner_cnt_list = {'': 0, '1塁': 1, '2塁': 1, '3塁': 1,
                    '1・2塁': 2, '2・3塁': 2, '1・3塁': 2, '満塁': 3}
-game_synario = {
+game_scenario = {
     '': '無効',
     '0': '引き分け',
     '1': '先制し、そのまま逃げ切り',

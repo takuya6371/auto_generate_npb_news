@@ -1,18 +1,16 @@
 # coding: UTF-8
-from flask import Flask, make_response, request, jsonify
-from flask_cors import CORS, cross_origin
-import output_news as on
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import sys
+import os
 import datetime
-import npb_const as nc
+sys.path.append(os.path.abspath("../../"))
+import api.usecase.news as news
+import api.usecase.latestNewsDate as latest
+import api.util.npb_const as nc
+
 api = Flask(__name__)
 CORS(api)
-# target year
-target_year = '2020'
-# target month
-target_month = '08'
-# target date
-target_date = '01'
-
 
 @api.route('/')
 def hello():
@@ -20,7 +18,7 @@ def hello():
     return name
 
 
-@api.route('/api/npb/news/<date>', methods=['POST'])
+@api.route('/api/npb/news/<date>', methods=['GET'])
 def npb(date=None):
     print(request.headers.get('Auth'))
     auth = request.headers.get('Auth')
@@ -35,10 +33,18 @@ def npb(date=None):
             newDate = datetime.datetime.strptime(date, "%Y%m%d")
         except:
             return '日付が不正です。'
-        name = "Good"
-        return_data = on.main_process(date[0:4], date[4:6], date[6:8])
-        print(return_data)
+        return_data = news.main_process(date[0:4], date[4:6], date[6:8])
     return jsonify({'auto_news': '¥n'.join(return_data)})
+
+
+@api.route('/api/npb/news/latestdate', methods=['GET'])
+def latestdate():
+    print(request.headers.get('Auth'))
+    auth = request.headers.get('Auth')
+    if not auth == nc.auth:
+        return 'auth failed'
+    return_data = latest.main()
+    return jsonify({'latest_news_date': return_data})
 
 
 # おまじない

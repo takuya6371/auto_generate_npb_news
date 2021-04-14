@@ -1,90 +1,56 @@
  
-synario:sensei
-hilight_ining:3-2
-visitor team:千葉ロッテマリーンズ
-home team  :北海道日本ハムファイターズ
-visitor:dict_values(['0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '5', '1'])
-home   :dict_values(['0', '0', '4', '0', '0', '3', '2', '0', 'x', '9', '14', '0'])
-hilight team   :北海道日本ハムファイターズ
-hilight_ining_get_score   :4
-True
-3 2 0 [0, 0]
-北海道日本ハムファイターズ対千葉ロッテマリーンズは、9対2で北海道日本ハムファイターズが勝ちました。
-
-synario:gyakuten
-hilight_ining:7-2
+synario:oituki
+hilight_ining:7-1
 visitor team:埼玉西武ライオンズ
 home team  :東北楽天ゴールデンイーグルス
-visitor:dict_values(['0', '2', '3', '0', '0', '0', '0', '0', '0', '5', '9', '0'])
-home   :dict_values(['1', '0', '1', '0', '0', '1', '6', '0', 'x', '9', '11', '1'])
-hilight team   :東北楽天ゴールデンイーグルス
-hilight_ining_get_score   :6
+visitor:dict_values(['1', '1', '0', '0', '0', '2', '2', '0', '0', '0', '6', '12', '0'])
+home   :dict_values(['6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '6', '7', '2'])
+hilight team   :埼玉西武ライオンズ
+hilight_ining_get_score   :2
 False
-7 2 0 [5, 3]
+7 1 0 [4, 6]
+1
+[{'play': '左中間ソロホームラン', 'get_score': 1, 'current_score_diff': -1, 'player': ''}, {'play': 'レフト前タイムリーヒット', 'get_score': 1, 'current_score_diff': 0, 'player': '森'}, {'play': 'ショートゴロ併殺打', 'get_score': 0, 'current_score_diff': 0, 'player': '愛斗'}]
+東北楽天ゴールデンイーグルス対埼玉西武ライオンズの試合は、6対6で引き分けました。
+西武は2点を追う7回、森のレフト前タイムリーヒットで追いつきました。
+synario:gyakuten
+hilight_ining:4-2
+visitor team:オリックス・バファローズ
+home team  :千葉ロッテマリーンズ
+visitor:dict_values(['1', '0', '0', '0', '0', '0', '1', '0', '1', '3', '7', '0'])
+home   :dict_values(['0', '0', '0', '3', '1', '0', '0', '0', 'x', '4', '7', '0'])
+hilight team   :千葉ロッテマリーンズ
+hilight_ining_get_score   :3
+True
+4 2 0 [1, 0]
 gyakuten
 2
 2
-[{'play': 'ライト満塁ホームラン', 'get_score': 4, 'current_score_diff': 4, 'player': 'ブラッシュ'}, {'play': 'センター前タイムリーヒット', 'get_score': 2, 'current_score_diff': 0, 'player': 'ロメロ'}]
-ブラッシュの満塁ホームラン、ロメロのセンター前タイムリーヒット
-東北楽天ゴールデンイーグルス対埼玉西武ライオンズは、9対5で東北楽天ゴールデンイーグルスが勝ちました。
-楽天は2点ビハインドで迎えた7回、ブラッシュの満塁ホームラン、ロメロのセンター前タイムリーヒットで逆転しました。
-synario:oituki
-hilight_ining:9-1
-visitor team:東京ヤクルトスワローズ
-home team  :広島東洋カープ
-visitor:dict_values(['0', '0', '0', '0', '1', '1', '0', '0', '1', '0', '3', '13', '1'])
-home   :dict_values(['0', '0', '0', '0', '0', '0', '3', '0', '0', '0', '3', '10', '0'])
-hilight team   :東京ヤクルトスワローズ
-hilight_ining_get_score   :1
-False
-9 1 0 [2, 3]
-0
-[{'play': 'センター前タイムリーヒット', 'get_score': 1, 'current_score_diff': 0, 'player': '上田'}]
-広島東洋カープ対東京ヤクルトスワローズは、3対3で引き分けました。
-ヤクルトは1点を追う9回、上田のセンター前タイムリーヒットで追いつきました。
-synario:katikosi
-hilight_ining:4-2
-visitor team:中日ドラゴンズ
-home team  :阪神タイガース
-visitor:dict_values(['0', '1', '1', '1', '0', '0', '0', '0', '0', '3', '7', '3'])
-home   :dict_values(['3', '0', '0', '3', '0', '1', '0', '4', 'x', '11', '14', '2'])
-hilight team   :阪神タイガース
-hilight_ining_get_score   :3
-True
-4 2 0 [3, 3]
-katikosi
-3
-3
-[{'play': 'フォアボール', 'get_score': 1, 'current_score_diff': 1, 'player': '糸原'}, {'play': 'フォアボール', 'get_score': 1, 'current_score_diff': 2, 'player': 'サンズ'}, {'play': 'センター犠牲フライ', 'get_score': 1, 'current_score_diff': 3, 'player': '大山'}]
-糸原の押し出し、サンズの押し出し
-阪神タイガース対中日ドラゴンズは、11対3で阪神タイガースが勝ちました。
-阪神は4回、糸原の押し出し、サンズの押し出しなどで3点を勝ち越しその後も追加点を上げました。
+[{'play': 'ライト3ランホームラン', 'get_score': 3, 'current_score_diff': 2, 'player': '荻野'}, {'play': 'ファーストゴロ', 'get_score': 0, 'current_score_diff': 2, 'player': '菅野'}]
+荻野の3ランホームラン、菅野のファーストゴロ
+千葉ロッテマリーンズ対オリックス・バファローズの試合は、4対3で千葉ロッテマリーンズが勝ちました。
+ロッテは1点ビハインドで迎えた4回、荻野の3ランホームラン、菅野のファーストゴロで逆転しました。
 synario:sensei
-hilight_ining:7-1
-visitor team:福岡ソフトバンクホークス
-home team  :オリックス・バファローズ
-visitor:dict_values(['0', '0', '0', '0', '0', '0', '3', '0', '0', '3', '6', '1'])
-home   :dict_values(['0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '6', '1'])
-hilight team   :福岡ソフトバンクホークス
-hilight_ining_get_score   :3
-True
-7 1 0 [0, 0]
-オリックス・バファローズ対福岡ソフトバンクホークスは、2対3で福岡ソフトバンクホークスが勝ちました。
-
-synario:gyakuten
-hilight_ining:9-1
-visitor team:読売ジャイアンツ
-home team  :横浜DeNAベイスターズ
-visitor:dict_values(['0', '0', '2', '0', '0', '0', '0', '0', '3', '5', '13', '0'])
-home   :dict_values(['1', '0', '1', '0', '1', '0', '0', '0', '0', '3', '9', '0'])
+hilight_ining:3-2
+visitor team:東京ヤクルトスワローズ
+home team  :読売ジャイアンツ
+visitor:dict_values(['0', '0', '0', '0', '0', '0', '1', '0', '1', '2', '7', '0'])
+home   :dict_values(['0', '0', '3', '0', '1', '0', '0', '2', 'x', '6', '11', '0'])
 hilight team   :読売ジャイアンツ
 hilight_ining_get_score   :3
-False
-9 1 0 [2, 3]
-gyakuten
-2
-2
-[{'play': 'ライト2ランホームラン', 'get_score': 2, 'current_score_diff': 2, 'player': '丸'}, {'play': 'セカンドタイムリーヒット', 'get_score': 1, 'current_score_diff': 0, 'player': 'ウィーラー'}]
-丸の2ランホームラン、ウィーラーのセカンドタイムリーヒット
-横浜DeNAベイスターズ対読売ジャイアンツは、3対5で読売ジャイアンツが勝ちました。
-巨人は1点ビハインドで迎えた9回、丸の2ランホームラン、ウィーラーのセカンドタイムリーヒットサヨナラ勝ちしました。
+True
+3 2 0 [0, 0]
+読売ジャイアンツ対東京ヤクルトスワローズの試合は、6対2で読売ジャイアンツが勝ちました。
+
+synario:sensei
+hilight_ining:4-1
+visitor team:阪神タイガース
+home team  :広島東洋カープ
+visitor:dict_values(['0', '0', '0', '1', '0', '1', '0', '0', '0', '2', '6', '0'])
+home   :dict_values(['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '4', '0'])
+hilight team   :阪神タイガース
+hilight_ining_get_score   :1
+True
+4 1 0 [0, 0]
+広島東洋カープ対阪神タイガースの試合は、0対2で阪神タイガースが勝ちました。
+
