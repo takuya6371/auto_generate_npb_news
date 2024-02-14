@@ -48,7 +48,7 @@ class GenerateNews:
                     gameHightlightIning,
                     hightlightInningPlays,
                 )
-                with open('print.txt', 'a') as f:
+                with open('news.txt', 'a') as f:
                     print(sentenceHead, file=f)
                     print(sentenseGameDetail, file=f)
                 gameResultList.append(sentenceHead + sentenseGameDetail)

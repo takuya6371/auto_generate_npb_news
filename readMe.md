@@ -12,3 +12,6 @@
 - api
   下記を実行(テスト)
   python flaskServer.py
+  下記の様にデータを取得した日をエンドポイントに含むとニュース分が返ってくる
+  もしくは news.txt に出力されている
+  curl http://127.0.0.1:5000/api/npb/news/20230705
