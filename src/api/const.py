@@ -66,10 +66,7 @@ PLAY_SHORT_NAME = {
     '右中間満塁ホームラン': '満塁ホームラン',
     '左中間満塁ホームラン': '満塁ホームラン',
 }
-# abs path
-abs_path = os.path.dirname(os.path.abspath(__file__))
-home_path = '/'.join(abs_path.split('/')[0:-3])
-data_path = home_path + '/data/'
+
 
 runner_cnt_list = {'': 0, '1塁': 1, '2塁': 1, '3塁': 1,
                    '1・2塁': 2, '2・3塁': 2, '1・3塁': 2, '満塁': 3}

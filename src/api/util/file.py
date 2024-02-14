@@ -1,26 +1,31 @@
+# coding: UTF-8
 from io import TextIOWrapper
 import os
 import json
 import glob
 
-def file_write (file_path:str, text:TextIOWrapper):
-    with open(file_path, 'w') as file:
+def fileWrite (filePath:str, text:TextIOWrapper):
+    with open(filePath, 'w') as file:
         file.write(text)
 
-def json_file_read (file):
+def fileRead (file):
+    with open(file) as f:
+       return f.read()
+
+def jsonFileRead (file):
     with open(file) as f:
        return json.load(f)
 
-def create_folder (path: str):
+def createFolder (path: str):
     if not os.path.exists(path):
         os.mkdir(path)
         print('folder create:' + path)
 
-def json_dump (json_file: str, data, mode: str):
-    with open(json_file, mode) as f:
+def jsonDump (jsonFile: str, data, mode: str):
+    with open(jsonFile, mode) as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-def clear_directory (path):
+def clearDirectory (path):
     print(path)
     print(glob.glob(path + '/*'))
     if len(glob.glob(path + '/*')) > 0:
@@ -30,5 +35,5 @@ def clear_directory (path):
             if os.path.isfile(p):
                 os.remove(p)
 
-def list_file (path):
+def listFiles (path):
     return sorted(glob.glob(path + '/*'))

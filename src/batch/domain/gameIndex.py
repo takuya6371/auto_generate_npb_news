@@ -41,7 +41,9 @@ class GameIndex:
         score_board['visitor'] = soup.find(class_='top')
         score_board['home'] = soup.find(class_='bottom')
         for k, v in score_board.items(): 
-            returnData[k + '_team'] = v.find('span').text
+            returnData[k + '_team'] = v.find('span', class_='hide_sp').text
+            print( v.find('span', class_='hide_sp').text)
+
             scoreTd = v.find_all('td')
             max_ining = len(scoreTd) - 3
             score = {}
@@ -71,7 +73,6 @@ class GameIndex:
     def process (self, filePath):
         print("extract index start")
         html = fileRead(filePath)
-        print(filePath)
         soup = BeautifulSoup(html, 'lxml')
         scheduleData = self.extractGameSchedule(soup)
         statusData = self.extractGameStatus(soup)
